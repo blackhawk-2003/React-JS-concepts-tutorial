@@ -1,0 +1,13 @@
+.headerTitle {
+  font-size: 24px;
+  text-align: center;
+}
+.mainWrapper {
+  padding: 50px;
+}
+
+.todoListWrapper {
+  display: grid;
+  gap: 15px;
+  grid-template-columns: repeat(3, 1fr);
+}
