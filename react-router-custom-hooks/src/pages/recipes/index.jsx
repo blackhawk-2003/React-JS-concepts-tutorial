@@ -1,4 +1,4 @@
-import { useLocation } from "react-router-dom";
+import { useLocation, Link } from "react-router-dom";
 import UseFetch from "../../hooks/use-fetch";
 import "./styles.css";
 
@@ -33,38 +33,47 @@ const Recipe = () => {
       {data?.recipes?.length > 0 ? (
         <div className="recipe-grid">
           {data.recipes.map((recipe) => (
-            <div key={recipe.id} className="recipe-card">
-              <div className="recipe-image-container">
-                <img
-                  src={recipe.image}
-                  alt={recipe.name}
-                  className="recipe-image"
-                  onError={(e) => {
-                    e.target.src =
-                      "https://via.placeholder.com/300x200?text=Recipe+Image";
-                  }}
-                />
-              </div>
-              <div className="recipe-content">
-                <h2 className="recipe-name">{recipe.name}</h2>
-                <p className="recipe-description">{recipe.description}</p>
-                <div className="recipe-meta">
-                  <span className="recipe-time">
-                    ⏱️ {recipe.cookTimeMinutes} min
-                  </span>
-                  <span className="recipe-servings">
-                    👥 {recipe.servings} servings
-                  </span>
+            <Link
+              to={`/home/recipe-list/${recipe.id}`}
+              key={recipe.id}
+              className="recipe-card-link"
+            >
+              <div className="recipe-card">
+                <div className="recipe-image-container">
+                  <img
+                    src={recipe.image}
+                    alt={recipe.name}
+                    className="recipe-image"
+                    onError={(e) => {
+                      e.target.src =
+                        "https://via.placeholder.com/300x200?text=Recipe+Image";
+                    }}
+                  />
+                  <div className="recipe-overlay">
+                    <span className="view-details">View Details</span>
+                  </div>
                 </div>
-                <div className="recipe-tags">
-                  {recipe.tags?.slice(0, 3).map((tag, index) => (
-                    <span key={index} className="recipe-tag">
-                      {tag}
+                <div className="recipe-content">
+                  <h2 className="recipe-name">{recipe.name}</h2>
+                  <p className="recipe-description">{recipe.description}</p>
+                  <div className="recipe-meta">
+                    <span className="recipe-time">
+                      ⏱️ {recipe.cookTimeMinutes} min
                     </span>
-                  ))}
+                    <span className="recipe-servings">
+                      👥 {recipe.servings} servings
+                    </span>
+                  </div>
+                  <div className="recipe-tags">
+                    {recipe.tags?.slice(0, 3).map((tag, index) => (
+                      <span key={index} className="recipe-tag">
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
                 </div>
               </div>
-            </div>
+            </Link>
           ))}
         </div>
       ) : (
