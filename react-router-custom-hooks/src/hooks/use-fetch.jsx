@@ -24,6 +24,5 @@ const UseFetch = (url, options) => {
   return { data, loading, error };
 };
 export default UseFetch;
-
 //useFetch is a custom hook that fetches data from an API and returns the data, loading, and error states.
 //It is a good practice to use custom hooks to fetch data from an API.

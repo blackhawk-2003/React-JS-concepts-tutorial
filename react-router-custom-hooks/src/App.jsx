@@ -8,6 +8,7 @@ import NotFoundPage from "./pages/not-found";
 import Layout from "./components/layout";
 import ReactHookForm from "./pages/react-hook-form";
 import Hooks from "./pages/hooks";
+import ReactQueryDemo from "./pages/react-query-demo";
 //We can also create routes using useRoutes hook
 //But you prefer the normal way
 
@@ -36,6 +37,10 @@ function CustomRoutes() {
     {
       path: "/hooks",
       element: <Hooks />,
+    },
+    {
+      path: "/react-query-demo",
+      element: <ReactQueryDemo />,
     },
   ]);
   return element;
@@ -89,6 +94,15 @@ function App() {
           >
             <span className="button-icon">🔄</span>
             Use Ref, Use Callback, Use Memo
+          </button>
+          <button
+            onClick={() => {
+              navigate("/react-query-demo");
+            }}
+            className="nav-button form-button"
+          >
+            <span className="button-icon">🔄</span>
+            React Query Demo
           </button>
         </div>
       </div>
