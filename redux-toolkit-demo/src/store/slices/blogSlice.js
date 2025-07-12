@@ -24,9 +24,11 @@ export const blogSlice = createSlice({
         title: state.title,
         description: state.description,
       });
+      localStorage.setItem("blogs", JSON.stringify(state.blogs));
     },
     deleteBlog: (state, action) => {
       state.blogs = state.blogs.filter((blog) => blog.id !== action.payload);
+      localStorage.setItem("blogs", JSON.stringify(state.blogs));
     },
     editBlog: (state, action) => {
       const { id, title, description } = action.payload;
@@ -34,6 +36,10 @@ export const blogSlice = createSlice({
       if (blogIndex !== -1) {
         state.blogs[blogIndex] = { id, title, description };
       }
+      localStorage.setItem("blogs", JSON.stringify(state.blogs));
+    },
+    setBlogs: (state, action) => {
+      state.blogs = action.payload;
     },
   },
 });
@@ -45,6 +51,7 @@ export const {
   addBlog,
   deleteBlog,
   editBlog,
+  setBlogs,
 } = blogSlice.actions;
 
 export default blogSlice.reducer;

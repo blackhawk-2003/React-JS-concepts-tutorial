@@ -1,6 +1,6 @@
 import { useSelector, useDispatch } from "react-redux";
-import { useState } from "react";
-import { deleteBlog } from "../store/slices/blogSlice";
+import { useState, useEffect } from "react";
+import { deleteBlog, setBlogs } from "../store/slices/blogSlice";
 import EditBlogDialog from "./edit-blog-dialog";
 import "./blog-list.css";
 
@@ -9,6 +9,13 @@ const BlogList = () => {
   const dispatch = useDispatch();
   const [editingBlog, setEditingBlog] = useState(null);
   const [isDialogOpen, setIsDialogOpen] = useState(false);
+
+  useEffect(() => {
+    const storedBlogs = localStorage.getItem("blogs");
+    if (storedBlogs) {
+      dispatch(setBlogs(JSON.parse(storedBlogs)));
+    }
+  }, [dispatch]);
 
   const handleEditClick = (blog) => {
     setEditingBlog(blog);

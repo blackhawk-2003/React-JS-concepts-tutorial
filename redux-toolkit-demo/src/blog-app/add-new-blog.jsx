@@ -10,6 +10,8 @@ const AddNewBlog = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     dispatch(addBlog());
+    dispatch(setTitle(""));
+    dispatch(setDescription(""));
   };
 
   const handleTitleChange = (e) => {
