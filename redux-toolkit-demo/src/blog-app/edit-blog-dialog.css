@@ -1,0 +1,358 @@
+/* Edit Blog Dialog Styles */
+.dialog-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(8px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  animation: fadeIn 0.3s ease-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.dialog-content {
+  background: white;
+  border-radius: 20px;
+  padding: 0;
+  max-width: 500px;
+  width: 90%;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.25);
+  animation: slideIn 0.3s ease-out;
+  position: relative;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-50px) scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.dialog-header {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  padding: 1.5rem 2rem;
+  border-radius: 20px 20px 0 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+}
+
+.dialog-header h2 {
+  margin: 0;
+  font-size: 1.5rem;
+  font-weight: 700;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.dialog-close-btn {
+  background: rgba(255, 255, 255, 0.2);
+  border: none;
+  color: white;
+  font-size: 1.5rem;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+}
+
+.dialog-close-btn:hover {
+  background: rgba(255, 255, 255, 0.3);
+  transform: scale(1.1);
+}
+
+.dialog-form {
+  padding: 2rem;
+}
+
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+.form-group label {
+  display: block;
+  color: #2c3e50;
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  padding: 1rem 1.2rem;
+  border: 2px solid #e1e8ed;
+  border-radius: 12px;
+  font-size: 1rem;
+  background: #f8f9fa;
+  color: #2c3e50;
+  transition: all 0.3s ease;
+  box-sizing: border-box;
+  font-family: inherit;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: #667eea;
+  background: white;
+  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+  transform: translateY(-1px);
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+  color: #95a5a6;
+  font-style: italic;
+}
+
+.form-group textarea {
+  resize: vertical;
+  min-height: 100px;
+  line-height: 1.5;
+}
+
+.dialog-actions {
+  display: flex;
+  gap: 1rem;
+  justify-content: flex-end;
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid #ecf0f1;
+}
+
+.btn-cancel,
+.btn-save {
+  padding: 0.8rem 1.5rem;
+  border: none;
+  border-radius: 10px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  min-width: 120px;
+}
+
+.btn-cancel {
+  background: #ecf0f1;
+  color: #7f8c8d;
+  border: 2px solid #ecf0f1;
+}
+
+.btn-cancel:hover {
+  background: #d5dbdb;
+  border-color: #d5dbdb;
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(236, 240, 241, 0.4);
+}
+
+.btn-save {
+  background: linear-gradient(45deg, #667eea, #764ba2);
+  color: white;
+  border: 2px solid transparent;
+}
+
+.btn-save:hover {
+  background: linear-gradient(45deg, #764ba2, #667eea);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(102, 126, 234, 0.3);
+}
+
+.btn-save:active {
+  transform: translateY(-1px);
+}
+
+/* Loading state */
+.btn-save:disabled {
+  background: #bdc3c7;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+/* Error state */
+.form-group.error input,
+.form-group.error textarea {
+  border-color: #e74c3c;
+  background: #fdf2f2;
+}
+
+.error-message {
+  color: #e74c3c;
+  font-size: 0.85rem;
+  margin-top: 0.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* Success state */
+.form-group.success input,
+.form-group.success textarea {
+  border-color: #27ae60;
+  background: #f8fff9;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .dialog-content {
+    width: 95%;
+    margin: 1rem;
+  }
+
+  .dialog-header {
+    padding: 1.2rem 1.5rem;
+  }
+
+  .dialog-header h2 {
+    font-size: 1.3rem;
+  }
+
+  .dialog-form {
+    padding: 1.5rem;
+  }
+
+  .dialog-actions {
+    flex-direction: column;
+    gap: 0.8rem;
+  }
+
+  .btn-cancel,
+  .btn-save {
+    width: 100%;
+    padding: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .dialog-content {
+    width: 98%;
+    margin: 0.5rem;
+    border-radius: 15px;
+  }
+
+  .dialog-header {
+    padding: 1rem 1.2rem;
+    border-radius: 15px 15px 0 0;
+  }
+
+  .dialog-form {
+    padding: 1.2rem;
+  }
+
+  .form-group input,
+  .form-group textarea {
+    padding: 0.8rem 1rem;
+    font-size: 0.9rem;
+  }
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+  .dialog-content {
+    background: #2d2d2d;
+    color: white;
+  }
+
+  .dialog-header {
+    background: linear-gradient(135deg, #4a5568 0%, #2d3748 100%);
+  }
+
+  .form-group label {
+    color: #e2e8f0;
+  }
+
+  .form-group input,
+  .form-group textarea {
+    background: #4a5568;
+    border-color: #4a5568;
+    color: #e2e8f0;
+  }
+
+  .form-group input:focus,
+  .form-group textarea:focus {
+    background: #2d3748;
+    border-color: #667eea;
+  }
+
+  .form-group input::placeholder,
+  .form-group textarea::placeholder {
+    color: #a0aec0;
+  }
+
+  .btn-cancel {
+    background: #4a5568;
+    color: #e2e8f0;
+    border-color: #4a5568;
+  }
+
+  .btn-cancel:hover {
+    background: #2d3748;
+    border-color: #2d3748;
+  }
+
+  .dialog-actions {
+    border-top-color: #4a5568;
+  }
+}
+
+/* Focus styles for accessibility */
+.btn-cancel:focus-visible,
+.btn-save:focus-visible,
+.dialog-close-btn:focus-visible {
+  outline: 2px solid #667eea;
+  outline-offset: 2px;
+}
+
+.form-group input:focus-visible,
+.form-group textarea:focus-visible {
+  outline: 2px solid #667eea;
+  outline-offset: 2px;
+}
+
+/* Animation for form validation */
+@keyframes shake {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(-5px);
+  }
+  75% {
+    transform: translateX(5px);
+  }
+}
+
+.form-group.error input,
+.form-group.error textarea {
+  animation: shake 0.3s ease-in-out;
+}
